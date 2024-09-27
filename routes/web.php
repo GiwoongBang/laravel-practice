@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArrayController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -61,3 +62,5 @@ Route::get('/delete-post/{id}', [ClientController::class, 'deletePost']) -> name
 ////////////////////////////////////
 
 Route::get('/string', [StringController::class, 'index']) -> name('string.index');
+
+Route::get('/array', [ArrayController::class, 'index']) -> name('array.index');
