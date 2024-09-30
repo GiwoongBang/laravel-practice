@@ -12,6 +12,7 @@ use App\Http\Controllers\StringController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -132,3 +133,10 @@ Route::get('/contact', function () {
 Route::get('/upload', [UploadController::class, 'uploadForm'])->name('upload.form');
 
 Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.file');
+
+////////////////////////////////////
+
+Route::get('/local/{locale}', function($locale) {
+    App::setLocale($locale);
+    return view('localization');
+});
