@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -52,5 +53,21 @@ class PostController extends Controller
     {
         DB::table('posts')->where('id', $id)->delete();
         return back()->with('post_deleted', 'Post has been deleted');
+    }
+
+    public function innerJoinClause()
+    {
+        $posts = DB::table('users')
+            ->select('posts.id', 'users.name', 'posts.subject', 'posts.content', 'users.email')
+            ->join('posts', 'users.id', '=', 'posts.user_id')
+            ->get();
+
+        return view('joinView', compact('posts'));
+    }
+
+    public function getAllPostsUsingMode() {
+        $posts = Post::all();
+
+        return view('joinAllPosts', compact('posts'));
     }
 }

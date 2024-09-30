@@ -100,3 +100,11 @@ Route::get('/posts/edit/{id}', [PostController::class, 'editPost']) -> name('pos
 Route::post('/posts/edit/{id}', [PostController::class, 'editPostSubmit']) -> name('post.edit');
 
 Route::get('/posts/delete/{id}', [PostController::class, 'deletePost']) -> name('post.delete');
+
+////////////////////////////////////
+
+Route::get('/join', [PostController::class, 'innerJoinClause']) -> name('post.innerjoin');
+
+////////////////////////////////////
+
+Route::get('/join/posts', [PostController::class, 'getAllPostsUsingMode']) -> name('posts.join.getallposts');
