@@ -94,3 +94,9 @@ Route::get('/post-add', [PostController::class, 'addPost']) -> name('post.add');
 Route::post('/post-submit', [PostController::class, 'addPostSubmit']) -> name('post.addsubmit');
 
 Route::get('/posts/{id}', [PostController::class, 'getPostById']) -> name('post.getbyid');
+
+Route::get('/posts/edit/{id}', [PostController::class, 'editPost']) -> name('post.editbyid');
+
+Route::post('/posts/edit/{id}', [PostController::class, 'editPostSubmit']) -> name('post.edit');
+
+Route::get('/posts/delete/{id}', [PostController::class, 'deletePost']) -> name('post.delete');

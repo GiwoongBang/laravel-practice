@@ -18,26 +18,27 @@
 </head>
 
 <body>
-    <div class="container w-50">
-        @if(Session::has('post_created'))
-            <div class="alert alert-success" role="alert">
-                {{Session::get('post_created')}}
+    <div class="container w-50 mt-5">
+        @if(Session::has('post_updated'))
+            <div class="alert alert-success">
+            {{Session::get('post_updated')}}
             </div>
         @endif
-        <form method="post" action="{{route('post.addsubmit')}}" autocomplete="off">
+        <form method="post" action="" autocomplete="off">
             @csrf
+            <input type="hidden" name="id" value="{{$post->id}}"/>
             <div class="mt-4 mb-3">
-                <span class="h2">Board</span>
+                <span class="h2">Board / Update Post</span>
             </div>
             <div class="mb-2">
-                <input type="text" name="subject" class="form-control" placeholder="Input Title">
+                <input type="text" name="subject" value="{{$post->subject}}" class="form-control">
             </div>
             <div>
-                <textarea name="content" id="" class="form-control" cols="30" rows="10"></textarea>
+                <textarea name="content" id="" cols="30" rows="10" class="form-control">{{$post->content}}</textarea>
             </div>
             <div class="mt-2">
-                <button class="btn btn-primary">Write</button>
-                <a href="{{route('post.getallposts')}}" class="btn btn-secondary">Cancel</a>
+                <button class="btn btn-primary">Apply</button>
+                <a href="{{route('post.getallposts')}}" class="btn btn-secondary">목록</a>
             </div>
         </form>
     </div>

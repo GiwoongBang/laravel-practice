@@ -32,4 +32,25 @@ class PostController extends Controller
         $post = DB::table('posts')->where('id', $id)->first();
         return view('postDetail', compact('post'));
     }
+
+    public function editPost($id)
+    {
+        $post = DB::table('posts')->where('id', $id)->first();
+        return view('postEdit', compact('post'));
+    }
+
+    public function editPostSubmit(Request $request)
+    {
+        DB::table('posts')->where('id', $request->input('id'))->update([
+            'subject' => $request->input('subject'),
+            'content' => $request->input('content'),
+        ]);
+        return back()->with('post_updated', 'Post has been updated');
+    }
+
+    public function deletePost($id)
+    {
+        DB::table('posts')->where('id', $id)->delete();
+        return back()->with('post_deleted', 'Post has been deleted');
+    }
 }

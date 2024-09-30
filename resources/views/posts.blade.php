@@ -18,6 +18,11 @@
 
 <body>
 <div class="container w-50 mt-5">
+    @if(Session::has('post_deleted'))
+        <div class="alert alert-success" role="alert">
+            {{Session::get('post_deleted')}}
+        </div>
+    @endif
     <table class="table">
         <thead>
         <tr>
@@ -32,13 +37,16 @@
                 <td>{{$post->subject}}</td>
                 <td>{{$post->content}}</td>
                 <td>
-                    <a href="" class="btn btn-sm btn-warning">수정</a>
+                    <a href="{{route('post.editbyid', $post->id)}}" class="btn btn-sm btn-warning">수정</a>
                     <a href="{{route('post.getbyid', $post->id)}}" class="btn btn-sm btn-primary">보기</a>
+                    <a href="{{route('post.delete', $post->id)}}" class="btn btn-sm btn-danger">삭제</a>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+
+    <a href="{{route('post.add')}}" class="btn btn-primary">Write</a>
 </div>
 </body>
 
