@@ -11,11 +11,11 @@ class checkUser
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        echo 'Check User Middleware has been applied to this path';
+        echo 'Check User Middleware has been applied to this path<br><br>';
         return $next($request);
     }
 }
