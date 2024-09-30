@@ -1,4 +1,5 @@
-<!doctype html>
+@php use Illuminate\Support\Facades\Session; @endphp
+    <!doctype html>
 
 <html lang="en">
 
@@ -18,7 +19,13 @@
 
 <body>
     <div class="container w-50">
-        <form action="" autocomplete="off">
+        @if(Session::has('post_created'))
+            <div class="alert alert-success" role="alert">
+                {{Session::get('post_created')}}
+            </div>
+        @endif
+        <form method="post" action="{{route('post.addsubmit')}}" autocomplete="off">
+            @csrf
             <div class="mt-4 mb-3">
                 <span class="h2">Board</span>
             </div>

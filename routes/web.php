@@ -91,4 +91,4 @@ Route::get('/posts', [PostController::class, 'getAllPosts']) -> name('posts.geta
 
 Route::get('/post-add', [PostController::class, 'addPost']) -> name('post.add');
 
-
+Route::post('/post-submit', [PostController::class, 'addPostSubmit']) -> name('post.addsubmit');
