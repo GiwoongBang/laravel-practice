@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StringController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -125,3 +126,9 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+////////////////////////////////////
+
+Route::get('/upload', [UploadController::class, 'uploadForm'])->name('upload.form');
+
+Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.file');
