@@ -4,6 +4,7 @@ use App\Http\Controllers\ArrayController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaginationController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
@@ -105,6 +106,8 @@ Route::get('/posts/delete/{id}', [PostController::class, 'deletePost']) -> name(
 
 Route::get('/join', [PostController::class, 'innerJoinClause']) -> name('post.innerjoin');
 
+Route::get('/join/posts', [PostController::class, 'getAllPostsUsingMode']) -> name('posts.join.getallposts');
+
 ////////////////////////////////////
 
-Route::get('/join/posts', [PostController::class, 'getAllPostsUsingMode']) -> name('posts.join.getallposts');
+Route::get('/pagination/posts', [PaginationController::class, 'getAllPosts']) -> name('pagination.getallposts');
