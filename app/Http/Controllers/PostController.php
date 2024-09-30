@@ -10,7 +10,7 @@ class PostController extends Controller
     public function getAllPosts()
     {
         $posts = DB::table('posts')->get();
-        return view('post', compact('posts'));
+        return view('posts', compact('posts'));
     }
 
     public function addPost()
@@ -25,5 +25,11 @@ class PostController extends Controller
             'content' => $request->input('content'),
         ]);
         return back()->with('post_created', 'Post has been created');
+    }
+
+    public function getPostById($id)
+    {
+        $post = DB::table('posts')->where('id', $id)->first();
+        return view('postDetail', compact('post'));
     }
 }

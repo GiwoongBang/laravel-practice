@@ -87,8 +87,10 @@ Route::get('/session/delete', [SessionController::class, 'deleteSession']) -> na
 
 ////////////////////////////////////
 
-Route::get('/posts', [PostController::class, 'getAllPosts']) -> name('posts.getallposts');
+Route::get('/posts', [PostController::class, 'getAllPosts']) -> name('post.getallposts');
 
 Route::get('/post-add', [PostController::class, 'addPost']) -> name('post.add');
 
 Route::post('/post-submit', [PostController::class, 'addPostSubmit']) -> name('post.addsubmit');
+
+Route::get('/posts/{id}', [PostController::class, 'getPostById']) -> name('post.getbyid');
