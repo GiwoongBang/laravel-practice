@@ -11,6 +11,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StringController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
+use App\Services\PaymentGateway\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -136,7 +137,13 @@ Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.fi
 
 ////////////////////////////////////
 
-Route::get('/local/{locale}', function($locale) {
+Route::get('/local/{locale}', function ($locale) {
     App::setLocale($locale);
     return view('localization');
+});
+
+////////////////////////////////////
+
+Route::get('/payment', function () {
+    return Payment::process();
 });
