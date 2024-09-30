@@ -13,5 +13,8 @@ class PostController extends Controller
         return view('post', compact('posts'));
     }
 
-    
+    public function addPost()
+    {
+        return view('postAdd');
+    }
 }
